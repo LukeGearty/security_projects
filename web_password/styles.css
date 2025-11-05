@@ -1,0 +1,126 @@
+/* === Password Strength Checker Style === */
+
+:root {
+  --bg-color: #0d1117;
+  --accent: #51e751;
+  --accent-weak: #ff006e;
+  --accent-medium: #ffb703;
+  --accent-strong: #2df33a;
+  --text-color: #e0e0e0;
+  --font-main: 'Poppins', sans-serif;
+  --transition: 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background: radial-gradient(circle at top, #0d1117 0%, #000 100%);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  background: rgba(22, 27, 34, 0.9);
+  padding: 2.5rem 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 25px rgba(0, 245, 212, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  transition: box-shadow var(--transition);
+}
+
+#container:hover {
+  box-shadow: 0 0 40px rgba(57, 211, 22, 0.4);
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Form Section */
+#password-container {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--bg-color);
+}
+
+button {
+  margin-top: 1rem;
+  background: var(--accent);
+  border: none;
+  color: var(--bg-color);
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition);
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #00e1c1;
+}
+
+/* Result Section */
+#result {
+  margin-top: 1.5rem;
+}
+
+progress {
+  width: 100%;
+  height: 15px;
+  border-radius: 1rem;
+  overflow: hidden;
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #333;
+  border-radius: 1rem;
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--accent-weak);
+  border-radius: 1rem;
+  transition: background-color var(--transition), width var(--transition);
+}
+
+#strength-text {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+#result-text {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}

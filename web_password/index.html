@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check Strength of Password</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -19,7 +20,9 @@
         </div>
 
         <div id="result">
-
+            <progress id="strength-bar" value="0" max="100"></progress>
+            <span id="strength-text">0%</span>
+            <p id="result-text"></p>
         </div>
     </div>
 

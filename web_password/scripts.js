@@ -1,15 +1,23 @@
 const passwordForm = document.getElementById("password-form");
 
-passwordForm.addEventListener("submit", () => {
+passwordForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const userPassword = document.getElementById("password").value;
+    const userPassword = document.getElementById("password").value.trim();
+    const strengthBar = document.getElementById("strength-bar");
+    const strengthText = document.getElementById("strength-text");
+    const resultText = document.getElementById('result-text');
+    const passwordScore = checkPasswordStrength(userPassword);
+    strengthBar.value = passwordScore;
+    strengthText.textContent = `${passwordScore}%`;
 
-    const score = checkPasswordStrength(userPassword);
-
-    passwordForm.reset();
+    resultText.textContent = `Your password is ${passwordScore}% strong.`;
 });
 
 function checkPasswordStrength(password) {
+
+    if (!password) {
+        return 0;
+    }
     const length = password.length;
     let hasUpperCase = false;
     let hasNumber = false;
@@ -18,32 +26,35 @@ function checkPasswordStrength(password) {
     let score = 0;
 
     if (length >= 8) {
-        score++;
+        score+=25;
+    }
+    if (length >= 12) {
+        score+=15;
     }
 
     for (let i = 0; i < length; i++) {
-        if (isUpperCase(password[i]) && hasUpperCase === false) {
+        if (hasUpperCase === false && isUpperCase(password[i])) {
             hasUpperCase = true;
-        } else if (isLowerCase(password[i]) && hasLowerCase === false) {
+        } else if (hasLowerCase === false && isLowerCase(password[i])) {
             hasLowerCase = true;
-        } else if (isNumber(password[i]) && hasNumber === false) {
+        } else if (hasNumber === false && isNumber(password[i])) {
             hasNumber = true;
-        } else if (isSpecialCharacter(password[i]) && hasSpecialCharacter === false) {
+        } else if (hasSpecialCharacter === false && isSpecialCharacter(password[i])) {
             hasSpecialCharacter = true;
         }
     }
 
     if (hasUpperCase) {
-        score++;
+        score+=15;
     }
     if (hasLowerCase) {
-        score++;
+        score+=15;
     }
     if (hasNumber) {
-        score++;
+        score+=15;
     }
     if (hasSpecialCharacter) {
-        score++;
+        score+=15;
     }
 
     return score;
