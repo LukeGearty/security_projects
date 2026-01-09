@@ -1,0 +1,337 @@
+[
+  {
+    "sign": "006E1EF0",
+    "suffix": ".ppt",
+    "format": "PPT"
+  },
+  {
+    "sign": "A0461DF0",
+    "suffix": ".ppt",
+    "format": "PPT"
+  },
+  {
+    "sign": "ECA5C100",
+    "suffix": ".doc",
+    "format": "Doc file"
+  },
+  {
+    "sign": "474946",
+    "suffix": ".gif",
+    "format": "GIF files"
+  },
+  {
+    "sign": "GIF89a",
+    "suffix": ".gif",
+    "format": "GIF files"
+  },
+  {
+    "sign": "FFD8FF",
+    "suffix": ".jpg",
+    "format": "JPEG files"
+  },
+  {
+    "sign": "JFIF",
+    "suffix": ".jpg",
+    "format": "JPEG files"
+  },
+  {
+    "sign": "504B03",
+    "suffix": ".zip",
+    "format": "ZIP files"
+  },
+  {
+    "sign": "LfLe",
+    "suffix": ".evt",
+    "format": "Event file"
+  },
+  {
+    "sign": "38425053",
+    "suffix": ".psd",
+    "format": "Photoshop file"
+  },
+  {
+    "sign": "8BPS",
+    "suffix": ".psd",
+    "format": "Photoshop file"
+  },
+  {
+    "sign": "4D5A",
+    "suffix": ".ocx",
+    "format": "Active X"
+  },
+  {
+    "sign": "415649204C495354",
+    "suffix": ".avi",
+    "format": "AVI file"
+  },
+  {
+    "sign": "AVI LIST",
+    "suffix": ".avi",
+    "format": "AVI file"
+  },
+  {
+    "sign": "57415645666D7420",
+    "suffix": ".wav",
+    "format": "WAV file"
+  },
+  {
+    "sign": "WAVEfmt",
+    "suffix": ".wav",
+    "format": "WAV file"
+  },
+  {
+    "sign": "25504446",
+    "suffix": ".pdf",
+    "format": "PDF files"
+  },
+  {
+    "sign": "%PDF",
+    "suffix": ".pdf",
+    "format": "PDF files"
+  },
+  {
+    "sign": "000100005374616E64617264204A6574204442",
+    "suffix": ".mdb",
+    "format": "Microsoft database"
+  },
+  {
+    "sign": "Standard Jet DB",
+    "suffix": ".mdb",
+    "format": "Microsoft database"
+  },
+  {
+    "sign": "2142444E",
+    "suffix": ".pst",
+    "format": "PST file"
+  },
+  {
+    "sign": "!BDN",
+    "suffix": ".pst",
+    "format": "PST file"
+  },
+  {
+    "sign": "4D6963726F736F66742056697375616C2053747564696F20536F6C7574696F6E2046696C65",
+    "suffix": ".sln",
+    "format": "Microsft SLN file"
+  },
+  {
+    "sign": "Microsoft Visual Studio Solution File",
+    "suffix": ".sln",
+    "format": "Microsft SLN file"
+  },
+  {
+    "sign": "504B030414000600",
+    "suffix": ".docx",
+    "format": "Microsoft DOCX file"
+  },
+  {
+    "sign": "504B030414000600",
+    "suffix": ".pptx",
+    "format": "Microsoft PPTX file"
+  },
+  {
+    "sign": "504B030414000600",
+    "suffix": ".xlsx",
+    "format": "Microsoft XLSX file"
+  },
+  {
+    "sign": "504B0304140008000800",
+    "suffix": ".xlsx",
+    "format": "Java JAR file"
+  },
+  {
+    "sign": "0908100000060500",
+    "suffix": ".xls",
+    "format": "XLS file"
+  },
+  {
+    "sign": "D0CF11E0A1B11AE1",
+    "suffix": ".msi",
+    "format": "MSI file"
+  },
+  {
+    "sign": "D0CF11E0A1B11AE1",
+    "suffix": ".doc",
+    "format": "DOC"
+  },
+  {
+    "sign": "D0CF11E0A1B11AE1",
+    "suffix": ".xls",
+    "format": "Excel"
+  },
+  {
+    "sign": "D0CF11E0A1B11AE1",
+    "suffix": ".vsd",
+    "format": "Visio"
+  },
+  {
+    "sign": "D0CF11E0A1B11AE1",
+    "suffix": ".ppt",
+    "format": "PPT"
+  },
+  {
+    "sign": "0A2525454F460A",
+    "suffix": ".pdf",
+    "format": "PDF file"
+  },
+  {
+    "sign": ".%%EOF.",
+    "suffix": ".pdf",
+    "format": "PDF file"
+  },
+  {
+    "sign": "4040402000004040",
+    "suffix": ".hlp",
+    "format": "HLP file"
+  },
+  {
+    "sign": "465753",
+    "suffix": ".swf",
+    "format": "SWF file"
+  },
+  {
+    "sign": "FWS",
+    "suffix": ".swf",
+    "format": "SWF file"
+  },
+  {
+    "sign": "CWS",
+    "suffix": ".swf",
+    "format": "SWF file"
+  },
+  {
+    "sign": "494433",
+    "suffix": ".mp3",
+    "format": "MP3 file"
+  },
+  {
+    "sign": "ID3",
+    "suffix": ".mp3",
+    "format": "MP3 file"
+  },
+  {
+    "sign": "MSCF",
+    "suffix": ".cab",
+    "format": "Cab file"
+  },
+  {
+    "sign": "0x4D534346",
+    "suffix": ".cab",
+    "format": "Cab file"
+  },
+  {
+    "sign": "ITSF",
+    "suffix": ".chm",
+    "format": "Compressed Help"
+  },
+  {
+    "sign": "49545346",
+    "suffix": ".chm",
+    "format": "Compressed Help"
+  },
+  {
+    "sign": "4C00000001140200",
+    "suffix": ".lnk",
+    "format": "Link file"
+  },
+  {
+    "sign": "4C01",
+    "suffix": ".obj",
+    "format": "OBJ file"
+  },
+  {
+    "sign": "4D4D002A",
+    "suffix": ".tif",
+    "format": "TIF graphics"
+  },
+  {
+    "sign": "MM",
+    "suffix": ".tif",
+    "format": "TIF graphics"
+  },
+  {
+    "sign": "000000186674797033677035",
+    "suffix": ".mp4",
+    "format": "MP4 Video"
+  },
+  {
+    "sign": "ftyp3gp5",
+    "suffix": ".mp4",
+    "format": "MP4 Video"
+  },
+  {
+    "sign": "0x00000100",
+    "suffix": ".ico",
+    "format": "Icon file"
+  },
+  {
+    "sign": "300000004C664C65",
+    "suffix": ".evt",
+    "format": "Event file"
+  },
+  {
+    "sign": "Rar!",
+    "suffix": ".rar",
+    "format": "RAR file"
+  },
+  {
+    "sign": "526172211A0700",
+    "suffix": ".rar",
+    "format": "RAR file"
+  },
+  {
+    "sign": "52657475726E2D506174683A20",
+    "suffix": ".eml",
+    "format": "EML file"
+  },
+  {
+    "sign": "Return-Path:",
+    "suffix": ".eml",
+    "format": "EML file"
+  },
+  {
+    "sign": "6D6F6F76",
+    "suffix": ".mov",
+    "format": "MOV file"
+  },
+  {
+    "sign": "moov",
+    "suffix": ".mov",
+    "format": "MOV file"
+  },
+  {
+    "sign": "7B5C72746631",
+    "suffix": ".rtf",
+    "format": "RTF file"
+  },
+  {
+    "sign": "{\\rtf1",
+    "suffix": ".rtf",
+    "format": "RTF file"
+  },
+  {
+    "sign": "89504E470D0A1A0A",
+    "suffix": ".png",
+    "format": "PNG file"
+  },
+  {
+    "sign": "PNG",
+    "suffix": ".png",
+    "format": "PNG file"
+  },
+  {
+    "sign": "C5D0D3C6",
+    "suffix": ".eps",
+    "format": "EPS file"
+  },
+  {
+    "sign": "CAFEBABE",
+    "suffix": ".class",
+    "format": "Java class file"
+  },
+  {
+    "sign": "D7CDC69A",
+    "suffix": ".WMF",
+    "format": "WMF file"
+  }
+]
