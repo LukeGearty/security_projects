@@ -1,0 +1,63 @@
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:18px;
+             font-weight:bold;
+             color:#202124;">
+    Meeting Invitation: {{ meeting_title }}
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:14px;
+             color:#202124;
+             padding-top:12px;">
+    {{ name }}, you have been invited to the following meeting:
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:14px;
+             color:#202124;
+             padding-top:10px;">
+    <strong>Topic:</strong> {{ meeting_title }}<br>
+    <strong>Date:</strong> {{ meeting_date }}<br>
+    <strong>Time:</strong> {{ meeting_time }}<br>
+    <strong>Organizer:</strong> {{ organizer }}
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:14px;
+             color:#202124;
+             padding-top:14px;">
+    Please review the meeting details and join using the link below.
+  </td>
+</tr>
+
+<tr>
+  <td align="center" style="padding-top:20px;">
+    <a href="{{ meeting_link }}"
+       style="background:#1a73e8;
+              color:#ffffff;
+              padding:12px 26px;
+              font-size:14px;
+              font-family:Arial, sans-serif;
+              text-decoration:none;
+              border-radius:4px;
+              display:inline-block;">
+      Join Meeting
+    </a>
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:12px;
+             color:#5f6368;
+             padding-top:18px;">
+    If you are unable to attend, please contact the meeting organizer.
+  </td>
+</tr>

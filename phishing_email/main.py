@@ -1,5 +1,5 @@
 from campaign import campaign_interface
-
+from emails import email_interface
 
 
 

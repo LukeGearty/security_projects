@@ -1,0 +1,63 @@
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:18px;
+             font-weight:bold;
+             color:#202124;">
+    Action Required: Multi-Factor Authentication
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:14px;
+             color:#202124;
+             padding-top:12px;">
+    We detected a sign-in attempt that requires additional verification.
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:14px;
+             color:#202124;
+             padding-top:10px;">
+    <strong>Account:</strong> {{ account_email }}<br>
+    <strong>Location:</strong> {{ location }}<br>
+    <strong>Device:</strong> {{ device }}<br>
+    <strong>Time:</strong> {{ timestamp }}
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:14px;
+             color:#202124;
+             padding-top:14px;">
+    Please confirm whether this sign-in attempt was initiated by you.
+  </td>
+</tr>
+
+<tr>
+  <td align="center" style="padding-top:20px;">
+    <a href="{{ verify_link }}"
+       style="background:#188038;
+              color:#ffffff;
+              padding:12px 26px;
+              font-size:14px;
+              font-family:Arial, sans-serif;
+              text-decoration:none;
+              border-radius:4px;
+              display:inline-block;">
+      Verify Sign-In
+    </a>
+  </td>
+</tr>
+
+<tr>
+  <td style="font-family:Arial, sans-serif;
+             font-size:12px;
+             color:#5f6368;
+             padding-top:18px;">
+    If this was not you, please verify immediately to secure your account.
+  </td>
+</tr>
