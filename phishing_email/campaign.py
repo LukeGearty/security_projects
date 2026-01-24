@@ -1,6 +1,11 @@
 import sqlite3
 from datetime import datetime
 import re
+from jinja2 import Template
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 
 """
 
@@ -121,6 +126,11 @@ def check_campaign():
     for i, user in enumerate(users):
         print(f"{i + 1} : {user}")
     
+    if len(users) == 0:
+        print("No current users active, please add")
+        return
+    
+
     print("Which user do you want to check the campaign status of?")
     while True:
         try:
@@ -150,7 +160,15 @@ def check_campaign():
     else:
         print("User has clicked on a phishing email")
 
-    
+
+"""
+
+Editing the users functions
+
+"""
+
+
+
 
 
 def campaign_interface():
@@ -160,7 +178,9 @@ def campaign_interface():
         print(" ++ Phishing Campaign Interface ++ ")
         print("1. Enter a new user")
         print("2. Check Status of a user")
-        print("3. Exit")
+        print("3. Create an email for a user")
+        print("4. Update an user's information")
+        print("5. Exit")
         try:
             choice = int(input())
         except ValueError:
@@ -175,7 +195,202 @@ def campaign_interface():
 
             print('\n'*3)
         elif choice == 3:
+            email_interface()
+            print("Please edit the html as you see fit")
+            print('\n'*3)
+        elif choice == 5:
             break
         
         else:
             print("Invalid Choice")
+
+
+
+"""
+
+Email management functions
+
+"""
+
+
+def render_email(base_path, body_path, context):
+    with open(body_path) as f:
+        body = Template(f.read()).render(context)
+
+    with open(base_path) as f:
+        base = Template(f.read())
+    
+    return base.render(
+        content=body,
+        footer="" # TODO
+    )
+
+
+
+def password_reset_email(name, link):
+    html = render_email(
+        "templates/base.html",
+        "templates/password_reset.html",
+        {
+            "name": name,
+            "link": link,
+        }
+    )
+    return html
+
+
+
+def meeting_email(name, meeting_link, meeting_title, meeting_date, meeting_time, organizer):
+    html = render_email("templates/base.html",
+                        "templates/meeting.html",
+                        {
+                            "name": name,
+                            "meeting_title": meeting_title,
+                            "meeting_link": meeting_link,
+                            "meeting_date": meeting_date,
+                            "meeting_time": meeting_time,
+                            "organizer": organizer
+                        })
+    return html
+
+
+def mfa_email(name,location, device, timestamp, verify_link):
+    html = render_email("templates/base.html",
+                        "templates/meeting.html",
+                        {
+                            "name": name,
+                            "location": location,
+                            "device": device,
+                            "timestamp": timestamp,
+                            "verify_link": verify_link,
+                        })
+    return html
+
+
+def send_email(message, html_body):
+    """
+    message: dictionary
+        "Subject" 
+        "From"
+        "To":
+    """
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = message["Subject"]
+    msg["From"] = message["From"]
+    msg["To"] = message["To"]
+
+    msg.attach(MIMEText(html_body, "html"))
+
+    with smtplib.SMTP("localhost", 1025) as server:
+        server.send_message(msg)
+
+
+
+def email_interface():
+    #get all the users
+    users = get_users()
+    if not users:
+        print("No users in this database, please add")
+        return
+
+    print("Which user is this email for?: ")
+    for i,user in enumerate(users):
+        print(f"{i + 1} : {user}")
+    while True:
+        try:
+            choice = int(input())
+        except ValueError:
+            print("Invalid option, please select a number")
+        break
+    if choice < 0 or choice > len(users):
+        print("invalid Choice")
+        return
+    
+
+    user_index = choice - 1
+    name = users[user_index]
+
+    print(f"Creating a campaign for {name}")
+    
+    while True:
+        print(" == Email Creation == ")
+        print("What kind of email would you like to create: ")
+        print("1. Password Reset")
+        print("2. Meeting Notification")
+        print("3. MFA Notification")
+
+        try:
+            choice = int(input())
+        except ValueError:
+            print("Please enter a number as your choice")
+        
+        
+        if choice == 1:
+            # Password reset
+            print("Please enter a link for the recipient to click: ")
+            link = input()
+
+            if not link: 
+                print("Please enter a valid link")
+
+            if name and link:
+                email_html = password_reset_email(name, link)
+
+                with open('password_reset.html', 'w') as f:
+                    f.write(email_html)
+        
+            return
+        elif choice == 2:
+            # Meeting email
+            # TODO: Figure out a better way to do this and validate input
+            meeting_link = input("Please enter a  meeting link: ")
+            meeting_title = input("Please enter the title of the meeting: ")
+            meeting_date = input("Please enter a date: ")
+            meeting_time = input("Please enter a time: ")
+            organizer = input("Please enter the organizer: ")
+            
+            email_html = meeting_email(name, meeting_link, meeting_title, meeting_date, meeting_time, organizer)
+
+            with open("meeting.html", "w") as f:
+                f.write(email_html)
+            
+            return
+        elif choice == 3:
+            # MFA email
+            location = input("Please enter a location: ")
+            device = input("Please enter a device: ")
+            timestamp = input("Please enter a timestamp: ")
+            verify_link = input("Please enter a verification link: ")
+
+            email_html = mfa_email(name,location, device, timestamp, verify_link)
+
+            with open("email_html", "w") as f:
+                f.write(email_html)
+
+            return
+        else:
+            print("Invalid choice, please choose again")
+
+
+def main():
+    while True:
+        print("== PHISHING TRAINING MAIN MENU INTERFACE ==")
+        print('\n' * 2)
+        print("1. Campaign Menu ")
+        print("2. Exit")
+
+        try:
+            choice = int(input())
+        except ValueError:
+            print("Please enter a number as your selection")
+        if choice == 1:
+            campaign_interface()
+        elif choice == 2:
+            break
+        else:
+            print("Invalid choice")
+    
+
+if __name__=="__main__":
+    main()

@@ -1,1 +1,4 @@
 planning.txt
+*.db
+/env
+/__pycache__
