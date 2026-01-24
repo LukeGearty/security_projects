@@ -15,6 +15,7 @@ Campaign Managmement portal
 
 """
 
+
 DB = "emails.db"
 
 
@@ -106,6 +107,33 @@ def get_user(name):
     return user_info
 
 
+def get_user_name():
+    # for when you just need the name
+
+    #get all the users
+    users = get_users()
+    if not users:
+        print("No users in this database, please add")
+        return
+
+    print("Which user is this email for?: ")
+    for i,user in enumerate(users):
+        print(f"{i + 1} : {user}")
+    while True:
+        try:
+            choice = int(input())
+        except ValueError:
+            print("Invalid option, please select a number")
+        break
+    if choice < 0 or choice > len(users):
+        print("invalid Choice")
+        return
+    
+    user_index = choice - 1
+    name = users[user_index]
+    return name
+
+
 def get_users():
     con = sqlite3.connect(DB)
     cur = con.cursor()
@@ -163,12 +191,73 @@ def check_campaign():
 
 """
 
-Editing the users functions
+Edit when last email was sent
+
+Update whether user has clicked on a phishing email
 
 """
 
+def update_last_email_sent(user, updated_date):
+    """
+    
+    Query the database
+        UPDATE users SET last_email_sent = ? WHERE name = ?
+        
+    """
+    con = sqlite3.connect(DB)
+    cur = con.cursor()
+    cur.execute("UPDATE users SET last_email_sent = ? WHERE name = ?", (user, updated_date))
+    con.commit()
+    con.close()
 
 
+
+def update_user_has_clicked(user):
+    # Kind of just a toggle
+    con = sqlite3.connect(DB)
+    cur = con.cursor()
+
+    cur.execute("UPDATE users SET is_clicked = NOT is_clicked WHERE name = ?", (user,))
+        
+    con.commit()
+    con.close()
+    # TODO add a better UX option, right now it is a little too mysterious
+
+
+def update_user_interface():
+    print('\n' * 3)
+    name = get_user_name()
+    if not name:
+        print("Error with that user name, exiting")
+        return
+    
+
+    while True:
+        print(f" -- Updating {name} Information -- ")
+        print("1. Update Last Email Sent")
+        print("2. Update whether user had clicked on a phishing link")
+        try:
+            choice = int(input())
+        except ValueError:
+            print("Please enter a number as a choice")
+        
+        if choice == 1:
+            print("Please enter the date of the last email sent in YYYY-MM-DD format: ")
+            date = input()
+
+            while not is_valid_date(date):
+                print("Please enter a date in the valid format: ")
+                date = input()
+            
+            update_last_email_sent(name, date)
+            return
+        elif choice == 2:
+            update_user_has_clicked(name)
+            return
+        else:
+            print("Pleae enter a valid choice")
+
+        
 
 
 def campaign_interface():
@@ -198,6 +287,8 @@ def campaign_interface():
             email_interface()
             print("Please edit the html as you see fit")
             print('\n'*3)
+        elif choice == 4:
+            update_user_interface()
         elif choice == 5:
             break
         
@@ -273,6 +364,8 @@ def send_email(message, html_body):
         "Subject" 
         "From"
         "To":
+
+    Will try to implement this last
     """
 
     msg = MIMEMultipart("alternative")
@@ -288,28 +381,12 @@ def send_email(message, html_body):
 
 
 def email_interface():
-    #get all the users
-    users = get_users()
-    if not users:
-        print("No users in this database, please add")
-        return
-
-    print("Which user is this email for?: ")
-    for i,user in enumerate(users):
-        print(f"{i + 1} : {user}")
-    while True:
-        try:
-            choice = int(input())
-        except ValueError:
-            print("Invalid option, please select a number")
-        break
-    if choice < 0 or choice > len(users):
-        print("invalid Choice")
-        return
     
+    name = get_user_name()
 
-    user_index = choice - 1
-    name = users[user_index]
+    if not name:
+        print("Error with that user, exiting")
+        return
 
     print(f"Creating a campaign for {name}")
     
